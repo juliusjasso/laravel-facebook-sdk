@@ -1,8 +1,8 @@
 {
-    "name": "scottybo/laravel-facebook-sdk",
-    "description": "Fully unit tested Facebook SDK v5 integration for Laravel 7.x",
+    "name": "moomak/laravel-facebook-sdk",
+    "description": "Fully unit tested Facebook SDK v5 integration for Laravel 9.x",
     "keywords": ["facebook", "laravel", "lumen", "sdk", "facebook sdk v4", "facebook sdk v5"],
-    "homepage": "https://github.com/scottybo/laravel-facebook-sdk",
+    "homepage": "https://github.com/moomak/laravel-facebook-sdk",
     "license": "MIT",
     "authors": [
         {
@@ -14,27 +14,27 @@
     ],
     "require": {
         "php": ">=7.3",
-        "illuminate/auth": "~7",
-        "illuminate/config": "~7",
-        "illuminate/database": "~7",
-        "illuminate/routing": "~7",
-        "illuminate/session": "~7",
-        "illuminate/support": "~7",
+        "illuminate/auth": "~9",
+        "illuminate/config": "~9",
+        "illuminate/database": "~9",
+        "illuminate/routing": "~9",
+        "illuminate/session": "~9",
+        "illuminate/support": "~9",
         "scottybo/facebook-graph-sdk": "^5.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0|~5.0|~6.0|~7.0",
+        "phpunit/phpunit": "~4.0|~5.0|~6.0|~7.0|~8.0|~9.0",
         "mockery/mockery": "~0.9",
         "squizlabs/php_codesniffer": "~2.0"
     },
     "autoload": {
         "psr-4": {
-            "Scottybo\\LaravelFacebookSdk\\": "src/LaravelFacebookSdk"
+            "Moomak\\LaravelFacebookSdk\\": "src/LaravelFacebookSdk"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Scottybo\\LaravelFacebookSdk\\Test\\": "tests"
+            "Moomak\\LaravelFacebookSdk\\Test\\": "tests"
         }
     },
     "branch-alias": {
@@ -43,10 +43,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Scottybo\\LaravelFacebookSdk\\LaravelFacebookSdkServiceProvider"
+                "Moomak\\LaravelFacebookSdk\\LaravelFacebookSdkServiceProvider"
             ],
             "aliases": {
-                "Facebook": "Scottybo\\LaravelFacebookSdk\\FacebookFacade"
+                "Facebook": "Moomak\\LaravelFacebookSdk\\FacebookFacade"
             }
         }
     }

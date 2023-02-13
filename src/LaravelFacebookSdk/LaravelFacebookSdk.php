@@ -1,4 +1,4 @@
-<?php namespace Scottybo\LaravelFacebookSdk;
+<?php namespace Moomak\LaravelFacebookSdk;
 
 use Illuminate\Contracts\Config\Repository as Config;
 use Facebook\Facebook;

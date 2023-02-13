@@ -1,9 +1,9 @@
-<?php namespace Scottybo\LaravelFacebookSdk;
+<?php namespace Moomak\LaravelFacebookSdk;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Scottybo\LaravelFacebookSdk\LaravelFacebookSdk
+ * @see \Moomak\LaravelFacebookSdk\LaravelFacebookSdk
  */
 class FacebookFacade extends Facade
 {
@@ -16,6 +16,6 @@ class FacebookFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Scottybo\LaravelFacebookSdk\LaravelFacebookSdk';
+        return 'Moomak\LaravelFacebookSdk\LaravelFacebookSdk';
     }
 }

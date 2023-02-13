@@ -1,12 +1,12 @@
 # Laravel Facebook SDK
 
-[![Build Status](https://img.shields.io/travis/scottybo/LaravelFacebookSdk.svg)](https://travis-ci.org/scottybo/LaravelFacebookSdk)
-[![Latest Stable Version](https://img.shields.io/packagist/v/scottybo/laravel-facebook-sdk.svg?maxAge=2592000)](https://packagist.org/packages/scottybo/laravel-facebook-sdk)
-[![Total Downloads](https://img.shields.io/packagist/dt/scottybo/laravel-facebook-sdk.svg)](https://packagist.org/packages/scottybo/laravel-facebook-sdk)
-[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/scottybo/LaravelFacebookSdk/blob/master/LICENSE)
+[![Build Status](https://img.shields.io/travis/moomak/LaravelFacebookSdk.svg)](https://travis-ci.org/moomak/LaravelFacebookSdk)
+[![Latest Stable Version](https://img.shields.io/packagist/v/moomak/laravel-facebook-sdk.svg?maxAge=2592000)](https://packagist.org/packages/moomak/laravel-facebook-sdk)
+[![Total Downloads](https://img.shields.io/packagist/dt/moomak/laravel-facebook-sdk.svg)](https://packagist.org/packages/moomak/laravel-facebook-sdk)
+[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/moomak/LaravelFacebookSdk/blob/master/LICENSE)
 
 
-A fully unit-tested package for easily integrating the [Facebook SDK v5](https://developers.facebook.com/docs/php/gettingstarted/5.0.0) into Laravel 6.
+A fully unit-tested package for easily integrating the [Facebook SDK v5](https://developers.facebook.com/docs/php/gettingstarted/5.0.0) into Laravel 9.
 
 ----
 
@@ -47,7 +47,7 @@ But if you need any of the following features, you'll want to tie in the Faceboo
 
 Add the Laravel Facebook SDK package to your `composer.json` file.
 
-    composer require scottybo/laravel-facebook-sdk
+    composer require moomak/laravel-facebook-sdk
 
 > **Auto-discovery:** As of version **3.5.0**, the Laravel Facebook SDK supports [auto-discovery](https://medium.com/@taylorotwell/package-auto-discovery-in-laravel-5-5-ea9e3ab20518) for Laravel 5.5 and greater.
 
@@ -57,14 +57,14 @@ In your app config, add the `LaravelFacebookSdkServiceProvider` to the providers
 
 ```php
 'providers' => [
-    Scottybo\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
+    Moomak\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
     ];
 ```
 
 For **Lumen**, add the provider to your `bootstrap/app.php` file.
 
 ```php
-$app->register(Scottybo\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class);
+$app->register(Moomak\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class);
 ```
 
 
@@ -74,7 +74,7 @@ If you want to make use of the facade, add it to the aliases array in your app c
 
 ```php
 'aliases' => [
-    'Facebook' => Scottybo\LaravelFacebookSdk\FacebookFacade::class,
+    'Facebook' => Moomak\LaravelFacebookSdk\FacebookFacade::class,
     ];
 ```
 
@@ -87,26 +87,26 @@ The IoC container will automatically resolve the `LaravelFacebookSdk` dependenci
 
 ```php
 // Directly from the IoC
-$fb = App::make('Scottybo\LaravelFacebookSdk\LaravelFacebookSdk');
+$fb = App::make('Moomak\LaravelFacebookSdk\LaravelFacebookSdk');
 // Or in PHP >= 5.5
-$fb = app(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk::class);
+$fb = app(Moomak\LaravelFacebookSdk\LaravelFacebookSdk::class);
 
 // From a constructor
 class FooClass {
-    public function __construct(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+    public function __construct(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
        // . . .
     }
 }
 
 // From a method
 class BarClass {
-    public function barMethod(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+    public function barMethod(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
        // . . .
     }
 }
 
 // Or even a closure
-Route::get('/facebook/login', function(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::get('/facebook/login', function(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     // . . .
 });
 ```
@@ -121,7 +121,7 @@ Route::get('/facebook/login', function(Scottybo\LaravelFacebookSdk\LaravelFacebo
 After [creating an app in Facebook](https://developers.facebook.com/apps), you'll need to provide the app ID and secret. In Laravel you can publish the configuration file with `artisan`.
 
 ```bash
-$ php artisan vendor:publish --provider="Scottybo\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider" --tag="config"
+$ php artisan vendor:publish --provider="Moomak\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider" --tag="config"
 ```
 
 > **Where's the file?** Laravel 5 will publish the config file to `/config/laravel-facebook-sdk.php`.
@@ -145,7 +145,7 @@ FACEBOOK_APP_SECRET=SomeFooAppSecret
 
 Here's a full example of how you might log a user into your app using the [redirect method](#login-from-redirect).
 
-This example also demonstrates how to [exchange a short-lived access token with a long-lived access token](https://www.scottybo.me/access-token-handling-best-practices-in-facebook-php-sdk-v4) and save the user to your `users` table if the entry doesn't exist.
+This example also demonstrates how to [exchange a short-lived access token with a long-lived access token](https://www.moomak.me/access-token-handling-best-practices-in-facebook-php-sdk-v4) and save the user to your `users` table if the entry doesn't exist.
 
 Finally it will log the user in using Laravel's built-in user authentication.
 
@@ -153,7 +153,7 @@ Finally it will log the user in using Laravel's built-in user authentication.
 
 ``` php
 // Generate a login URL
-Route::get('/facebook/login', function(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb)
+Route::get('/facebook/login', function(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb)
 {
     // Send an array of permissions to request
     $login_url = $fb->getLoginUrl(['email']);
@@ -163,7 +163,7 @@ Route::get('/facebook/login', function(Scottybo\LaravelFacebookSdk\LaravelFacebo
 });
 
 // Endpoint that is redirected to after an authentication attempt
-Route::get('/facebook/callback', function(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb)
+Route::get('/facebook/callback', function(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb)
 {
     // Obtain an access token.
     try {
@@ -280,7 +280,7 @@ The redirect helper can be obtained using the SDK's `getRedirectLoginHelper()` m
 You can get a login URL just like you you do with the Facebook PHP SDK v5.
 
 ```php
-Route::get('/facebook/login', function(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::get('/facebook/login', function(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     $login_link = $fb
             ->getRedirectLoginHelper()
             ->getLoginUrl('https://exmaple.com/facebook/callback', ['email', 'user_events']);
@@ -314,7 +314,7 @@ After the user has clicked on the login link from above and confirmed or denied 
 The standard "SDK" way to obtain an access token on the callback URL is as follows:
 
 ```php
-Route::get('/facebook/callback', function(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::get('/facebook/callback', function(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     try {
         $token = $fb
             ->getRedirectLoginHelper()
@@ -329,7 +329,7 @@ Route::get('/facebook/callback', function(Scottybo\LaravelFacebookSdk\LaravelFac
 There is a wrapper method for `getRedirectLoginHelper()->getAccessToken()` in LaravelFacebookSdk called `getAccessTokenFromRedirect()` that defaults the callback URL to the `laravel-facebook-sdk.default_redirect_uri` config value.
 
 ```php
-Route::get('/facebook/callback', function(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::get('/facebook/callback', function(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     try {
         $token = $fb->getAccessTokenFromRedirect();
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
@@ -362,7 +362,7 @@ FB.init({
 After you have logged a user in with the JavaScript SDK using [`FB.login()`](https://developers.facebook.com/docs/reference/javascript/FB.login), you can obtain a user access token from the signed request that is stored in the cookie that was set by the JavaScript SDK.
 
 ```php
-Route::get('/facebook/javascript', function(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::get('/facebook/javascript', function(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     try {
         $token = $fb->getJavaScriptHelper()->getAccessToken();
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
@@ -390,7 +390,7 @@ If your app lives within the context of a Facebook app canvas, you can obtain an
 Use the SDK's canvas helper to obtain the access token from the signed request data.
 
 ```php
-Route::match(['get', 'post'], '/facebook/canvas', function(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::match(['get', 'post'], '/facebook/canvas', function(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     try {
         $token = $fb->getCanvasHelper()->getAccessToken();
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
@@ -415,7 +415,7 @@ If your app lives within the context of a Facebook Page tab, that is the same as
 The SDK provides a Page tab helper to obtain an access token from the signed request data within the context of a Page tab.
 
 ```php
-Route::match(['get', 'post'], '/facebook/page-tab', function(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::match(['get', 'post'], '/facebook/page-tab', function(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     try {
         $token = $fb->getPageTabHelper()->getAccessToken();
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
@@ -489,7 +489,7 @@ Saving data received from the Graph API to a database can sometimes be a tedious
 Any Eloquent model that implements the `SyncableGraphNodeTrait` will have the `createOrUpdateGraphNode()` method applied to it. This method really makes it easy to take data that was returned directly from Facebook and create or update it in the local database.
 
 ```php
-use Scottybo\LaravelFacebookSdk\SyncableGraphNodeTrait;
+use Moomak\LaravelFacebookSdk\SyncableGraphNodeTrait;
 
 class Event extends Eloquent {
     use SyncableGraphNodeTrait;
@@ -518,7 +518,7 @@ Since the names of the columns in your database might not match the names of the
 The *keys* of the array are the names of the fields on the Graph node. The *values* of the array are the names of the columns in the local database.
 
 ```php
-use Scottybo\LaravelFacebookSdk\SyncableGraphNodeTrait;
+use Moomak\LaravelFacebookSdk\SyncableGraphNodeTrait;
 
 class User extends Eloquent implements UserInterface
 {
@@ -538,7 +538,7 @@ class User extends Eloquent implements UserInterface
 By default the `createOrUpdateGraphNode()` method will try to insert all the fields of a node into the database. But sometimes the Graph API will return fields that you didn't specifically ask for and don't exist in your database. In those cases we can white list specific fields with the `$graph_node_fillable_fields` property.
 
 ```php
-use Scottybo\LaravelFacebookSdk\SyncableGraphNodeTrait;
+use Moomak\LaravelFacebookSdk\SyncableGraphNodeTrait;
 
 class Event extends Eloquent
 {
@@ -595,7 +595,7 @@ Schema::create('events', function(Blueprint $table)
 Here's how you would map the nested fields to your database table in your `Event` model:
 
 ```php
-use Scottybo\LaravelFacebookSdk\SyncableGraphNodeTrait;
+use Moomak\LaravelFacebookSdk\SyncableGraphNodeTrait;
 
 class Event extends Eloquent
 {
@@ -622,7 +622,7 @@ By default the `SyncableGraphNodeTrait` will convert all `DateTime` instances to
 That should the proper format for most cases on most relational databases. But this format is missing the timezone which might be important to your application. Furthermore if you're storing the date/time values in a different format, you'll want to customize the format that `DateTime` instances get converted to. To do this just add a `$graph_node_date_time_to_string_format` property to your model and set it to any [valid date format](http://php.net/manual/en/function.date.php).
 
 ```php
-use Scottybo\LaravelFacebookSdk\SyncableGraphNodeTrait;
+use Moomak\LaravelFacebookSdk\SyncableGraphNodeTrait;
 
 class Event extends Eloquent
 {
@@ -701,7 +701,7 @@ Don't forget to add the [`SyncableGraphNodeTrait`](#saving-data-from-facebook-in
 
 ```php
 # User.php
-use Scottybo\LaravelFacebookSdk\SyncableGraphNodeTrait;
+use Moomak\LaravelFacebookSdk\SyncableGraphNodeTrait;
 
 class User extends Eloquent implements UserInterface {
     use SyncableGraphNodeTrait;
@@ -717,7 +717,7 @@ After the user has logged in with Facebook and you've obtained the user ID from 
 
 ```php
 class FacebookController {
-    public function getUserInfo(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+    public function getUserInfo(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
        try {
            $response = $fb->get('/me?fields=id,name,email');
        } catch (Facebook\Exceptions\FacebookSDKException $e) {
@@ -743,7 +743,7 @@ class FacebookController {
 If you have multiple Facebook apps that you'd like to use in the same script or you want to tweak the settings during runtime, you can create a new instance of `LaravelFacebookSdk` with the custom settings.
 
 ```php
-Route::get('/example', function(Scottybo\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::get('/example', function(Moomak\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     // All the possible configuration options are available here
     $fb2 = $fb->newInstance([
       'app_id' => env('FACEBOOK_APP_ID2'),
@@ -891,14 +891,14 @@ $ ./vendor/bin/phpunit
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/scottybo/LaravelFacebookSdk/blob/master/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/moomak/LaravelFacebookSdk/blob/master/CONTRIBUTING.md) for details.
 
 
 ## Credits
 
-This package is maintained by [Scott Bowler](https://github.com/scottybo). See a [full list of contributors](https://github.com/scottybo/laravel-facebook-sdk/contributors).
+This package is maintained by [Scott Bowler](https://github.com/moomak). See a [full list of contributors](https://github.com/moomak/laravel-facebook-sdk/contributors).
 
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/scottybo/LaravelFacebookSdk/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/moomak/LaravelFacebookSdk/blob/master/LICENSE) for more information.
