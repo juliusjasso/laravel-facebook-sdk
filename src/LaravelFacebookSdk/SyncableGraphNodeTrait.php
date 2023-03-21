@@ -40,7 +40,7 @@ trait SyncableGraphNodeTrait
     {
         // @todo this will be GraphNode soon
         if ($data instanceof GraphObject || $data instanceof GraphNode) {
-            $data = array_dot($data->asArray());
+            $data = \Illuminate\Support\Arr::dot($data->asArray());
         }
 
         $data = static::convertGraphNodeDateTimesToStrings($data);
