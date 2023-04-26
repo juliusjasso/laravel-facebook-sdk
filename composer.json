@@ -1,8 +1,8 @@
 {
-    "name": "moomak/laravel-facebook-sdk",
-    "description": "Fully unit tested Facebook SDK v5 integration for Laravel 9.x",
+    "name": "nicodwik/laravel-facebook-sdk",
+    "description": "Fully unit tested Facebook SDK v5 integration for Laravel 10.x",
     "keywords": ["facebook", "laravel", "lumen", "sdk", "facebook sdk v4", "facebook sdk v5"],
-    "homepage": "https://github.com/moomak/laravel-facebook-sdk",
+    "homepage": "https://github.com/nicodwik/laravel-facebook-sdk",
     "license": "MIT",
     "authors": [
         {
@@ -13,13 +13,13 @@
         }
     ],
     "require": {
-        "php": ">=7.3",
-        "illuminate/auth": "~9",
-        "illuminate/config": "~9",
-        "illuminate/database": "~9",
-        "illuminate/routing": "~9",
-        "illuminate/session": "~9",
-        "illuminate/support": "~9",
+        "php": ">=8.0",
+        "illuminate/auth": "~9|~10.0",
+        "illuminate/config": "~9|~10.0",
+        "illuminate/database": "~9|~10.0",
+        "illuminate/routing": "~9|~10.0",
+        "illuminate/session": "~9|~10.0",
+        "illuminate/support": "~9|~10.0",
         "moomak/facebook-graph-sdk": "^1.1"
     },
     "require-dev": {
@@ -29,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Moomak\\LaravelFacebookSdk\\": "src/LaravelFacebookSdk"
+            "Nicodwik\\LaravelFacebookSdk\\": "src/LaravelFacebookSdk"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Moomak\\LaravelFacebookSdk\\Test\\": "tests"
+            "Nicodwik\\LaravelFacebookSdk\\Test\\": "tests"
         }
     },
     "branch-alias": {
@@ -43,10 +43,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Moomak\\LaravelFacebookSdk\\LaravelFacebookSdkServiceProvider"
+                "Nicodwik\\LaravelFacebookSdk\\LaravelFacebookSdkServiceProvider"
             ],
             "aliases": {
-                "Facebook": "Moomak\\LaravelFacebookSdk\\FacebookFacade"
+                "Facebook": "Nicodwik\\LaravelFacebookSdk\\FacebookFacade"
             }
         }
     }
