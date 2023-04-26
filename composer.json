@@ -29,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Nicodwik\\LaravelFacebookSdk\\": "src/LaravelFacebookSdk"
+            "Moomak\\LaravelFacebookSdk\\": "src/LaravelFacebookSdk"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Nicodwik\\LaravelFacebookSdk\\Test\\": "tests"
+            "Moomak\\LaravelFacebookSdk\\Test\\": "tests"
         }
     },
     "branch-alias": {
@@ -43,10 +43,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Nicodwik\\LaravelFacebookSdk\\LaravelFacebookSdkServiceProvider"
+                "Moomak\\LaravelFacebookSdk\\LaravelFacebookSdkServiceProvider"
             ],
             "aliases": {
-                "Facebook": "Nicodwik\\LaravelFacebookSdk\\FacebookFacade"
+                "Facebook": "Moomak\\LaravelFacebookSdk\\FacebookFacade"
             }
         }
     }
